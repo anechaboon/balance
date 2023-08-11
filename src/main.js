@@ -17,6 +17,7 @@ import 'jquery';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
+
 const app = createApp(App)
 
 registerPlugins(app)
