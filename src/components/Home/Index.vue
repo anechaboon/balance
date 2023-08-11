@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import DashboardVue from '../Home/Dashboard.vue';
-import TransactionsPage from '../Home/Transactions.vue';
+import DashboardVue from './Dashboard.vue';
+import TransactionsPage from './Transactions.vue';
 export default {
   components:{
     TransactionsPage,

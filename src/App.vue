@@ -7,12 +7,10 @@
 
     <!-- Bottom Navigation -->
     <v-bottom-navigation v-model="activeLink">
-      {{ activeLink }}
-
       <v-btn
         v-for="(item, index) in links"
+        @click="activeLink = item.link"
         :key="index"
-        @click="selectTab(item.link)"
         :to="item.path"
       >
         <v-icon :style="item.style">{{ item.icon }}</v-icon>
@@ -50,11 +48,6 @@ export default {
     };
   },
   methods:{
-    selectTab(link){
-      console.log(`log:link`,link);
-      this.activeLink = link
-
-    }
   }
 };
 </script>
