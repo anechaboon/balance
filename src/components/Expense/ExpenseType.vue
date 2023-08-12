@@ -1,22 +1,22 @@
 <template>
   <div class="m-4 flex">
     
-    <div class="col-4 font-3em text-center expenseType pills" @click="selectExpenseType('pills')">
+    <div class="col-4 font-2em text-center expenseType pills" @click="selectExpenseType('pills')">
         <i class="fa-solid fa-pills"></i>
     </div>
-    <div class="col-4 font-3em text-center expenseType food" @click="selectExpenseType('food')">
+    <div class="col-4 font-2em text-center expenseType food" @click="selectExpenseType('food')">
         <i class="fa-solid fa-utensils"></i> 
     </div>
-    <div class="col-4 font-3em text-center expenseType shopping" @click="selectExpenseType('shopping')">
+    <div class="col-4 font-2em text-center expenseType shopping" @click="selectExpenseType('shopping')">
         <i class="fa-solid fa-cart-shopping"></i>
     </div>
-    <div class="col-4 font-3em text-center expenseType phone" @click="selectExpenseType('phone')">
+    <div class="col-4 font-2em text-center expenseType phone" @click="selectExpenseType('phone')">
         <i class="fa-solid fa-phone"></i>
     </div>
-    <div class="col-4 font-3em text-center expenseType pea" @click="selectExpenseType('pea')">
+    <div class="col-4 font-2em text-center expenseType pea" @click="selectExpenseType('pea')">
         <i class="fa-solid fa-plug"></i>
     </div>
-    <div class="col-4 font-3em text-center expenseType haircut" @click="selectExpenseType('haircut')">
+    <div class="col-4 font-2em text-center expenseType haircut" @click="selectExpenseType('haircut')">
         <i class="fa-solid fa-scissors"></i>
     </div>
   </div>
@@ -42,8 +42,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-.font-3em {
-  font-size: 3em;
+.font-2em {
+  font-size: 2em;
 }
 .active{
   background-color: #80b6ff;

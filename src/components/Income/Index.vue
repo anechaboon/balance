@@ -1,12 +1,12 @@
 <template>
-    <div class="m-05em pl-3 mr-3 expense">
+    <div class="m-05em pl-3 mr-3 income">
         <div class="row">
             <div class="col-10">
-                <h1>Expense</h1>
+                <h1>Income</h1>
             </div>
             <div class="col-2">
                 <v-btn
-                    :to="'expenseTransaction'"
+                    :to="'incomeTransaction'"
                     :icon="`mdi-chevron-right-circle`"
                     height="40"
                     variant="text"
@@ -14,7 +14,7 @@
                 ></v-btn>
             </div>
         </div>
-        <ExpenseType></ExpenseType>
+        <IncomeType></IncomeType>
         <div class="p-2">
             <input type="text" v-model="memo" class="form-control m-1" placeholder="Enter MEMO">
             <input
@@ -30,21 +30,21 @@
         
     </div>
 </template>
-
+``
 <script>
 import Keyboard from './Keyboard.vue'
-import ExpenseType from './ExpenseType.vue'
+import IncomeType from './IncomeType.vue'
 export default {
-    name: 'ExpensePage',
+    name: 'IncomePage',
     components: {
         Keyboard,
-        ExpenseType
+        IncomeType
     },
     data() {
       return {
        amount: null,
        keyAmount:'',
-       expenseType: '',
+       incomeType: '',
        memo: ''
       }
     },
@@ -52,7 +52,7 @@ export default {
         save(){
             this.amount = this.keyAmount
             console.log(`log:memo`,this.memo);
-            console.log(`log:expenseType`,this.expenseType);
+            console.log(`log:incomeType`,this.incomeType);
             console.log(`log:amount`,this.amount);
             
         }
@@ -65,8 +65,8 @@ export default {
     .m-05em{
         margin: 0.5em;
     }
-    .expense{
-        background-color: #f0bdbd;
+    .income{
+        background-color: #bdf0da;
         padding: 10px;
         border-radius: 20px;
     }

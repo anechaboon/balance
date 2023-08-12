@@ -1,20 +1,21 @@
 <template>
-    <div class="m-05em pl-3 mr-3">
+    <div class="m-05em dashboard">
         <div class="row">
             <div class="col-10">
                 <h1>Transactions</h1>
             </div>
             <div class="col-2">
                 <v-btn
-                    :to="'allTransaction'"
-                    :icon="`mdi-chevron-right-circle`"
+                    :to="'/'"
+                    :icon="`mdi-chevron-left-circle`"
                     height="40"
                     variant="text"
                     width="40"
                 ></v-btn>
             </div>
+
         </div>
-        <div class="row">
+        <div class="border-radius">
             <div class="m-05em">
                 Today
             </div>
@@ -35,25 +36,49 @@
                         <b>- ฿ 200</b>
                     </div>
                 </div>
+                <div class="row pb-3">
+                    <div class="col-2">
+                        <img alt="Vue logo" src="@/assets/profile.png" width="40" />
+                    </div>
+                    <div class="col-7">
+                        <div>
+                            <b>Uber</b>
+                        </div>
+                        <div>
+                            06:56 PM
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <b>- ฿ 200</b>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: 'TransactionsPage',
-    methods:{
-        allTransaction(){
 
-        }
-    }
-    
-  }
-  </script>
+</template>
   
-  <style>
-    .custom-button-style {
+<script>
+    export default {
+    name: 'DashboardPage',
+
+    }
+</script>
+
+<style>
+    .m-05em{
+        margin: 0.5em;
+    }
+    .dashboard{
+        background-color: #bdf0da;
+        padding: 10px;
         border-radius: 20px;
     }
-  </style>
+    .border-radius{
+        border-radius: 20px;
+    }
+    .v-btn__overlay{
+        background-color: unset !important;
+    }
+</style>
+  
