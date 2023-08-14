@@ -20,6 +20,7 @@
 </template>
 
 <script>
+
 export default {
   name: "App",
   data() {
@@ -48,6 +49,17 @@ export default {
     };
   },
   methods:{
+  },
+  mounted(){
+
+    // let balanceUserId = Cookies.get('balanceUserId');
+    // balanceUserId = typeof balanceUserId;
+    // if(balanceUserId === 'undefined'){
+    //   Cookies.set('balanceUserId', null)
+    //   window.location.href = '/login'; //relative to domain
+    // } 
+
+
   }
 };
 </script>
