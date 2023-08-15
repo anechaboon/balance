@@ -21,7 +21,7 @@
 import Cookies from 'js-cookie'
 import Api from '@/services/endpoint/tenant.service'
 
-  export default {
+export default {
     data() {
       return {
         email: '',
@@ -33,11 +33,22 @@ import Api from '@/services/endpoint/tenant.service'
         if (!this.email || !this.password) {
           // แสดงข้อความหรือดำเนินการตามที่คุณต้องการ
           return;
-        }
-        // let res = await Api.Income.getIncome();
-        // console.log(`log:res`,res);
+        }else{
 
-        Cookies.set('balanceUserId',1);
+            let credentials = {
+                email: this.email,
+                password: btoa(this.password),
+            }
+            
+            let res = await Api.Authorization.login(credentials);
+
+            if(res){
+                let userId = res.data.id
+                Cookies.set('balanceUserId',userId);
+                window.location.href = '/';
+            }
+
+        }
   
         // ดำเนินการเข้าสู่ระบบหรือทำสิ่งที่ต้องการ
         // แล้ว redirect ไปยังหน้า dashboard หรืออื่น ๆ

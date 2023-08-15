@@ -19,38 +19,22 @@
                 Today
             </div>
             <div class="transactions">
-                <div class="row pb-3">
-                    <div class="col-2">
-                        <img alt="Vue logo" src="@/assets/profile.png" width="40" />
-                    </div>
-                    <div class="col-7">
-                        <div>
-                            <b>Uber</b>
-                        </div>
-                        <div>
-                            06:56 PM
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <b>- ฿ 200</b>
-                    </div>
-                </div>
+                <TransactionList></TransactionList>
             </div>
         </div>
     </div>
   </template>
   
-  <script>
-  export default {
+<script>
+import TransactionList from './TransactionList.vue';
+export default {
     name: 'TransactionsPage',
-    methods:{
-        allTransaction(){
-
-        }
+    components: {
+        TransactionList
     }
     
-  }
-  </script>
+}
+</script>
   
   <style>
     .custom-button-style {

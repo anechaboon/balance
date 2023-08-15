@@ -74,6 +74,7 @@ export default {
 .btn-keyboard {
   background-color: #80b6ff;
   color: #ffffff;
+  height: 2em;
 }
 </style>
   

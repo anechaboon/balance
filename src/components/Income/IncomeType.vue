@@ -1,37 +1,38 @@
 <template>
-  <div class="m-4 flex">
-    <div class="col-4 font-2em text-center incomeType pills" @click="selectIncomeType('pills')">
-        <i class="fa-solid fa-pills"></i>
-    </div>
-    <div class="col-4 font-2em text-center incomeType food" @click="selectIncomeType('food')">
-        <i class="fa-solid fa-utensils"></i> 
-    </div>
-    <div class="col-4 font-2em text-center incomeType shopping" @click="selectIncomeType('shopping')">
-        <i class="fa-solid fa-cart-shopping"></i>
-    </div>
-    <div class="col-4 font-2em text-center incomeType phone" @click="selectIncomeType('phone')">
-        <i class="fa-solid fa-phone"></i>
-    </div>
-    <div class="col-4 font-2em text-center incomeType pea" @click="selectIncomeType('pea')">
-        <i class="fa-solid fa-plug"></i>
-    </div>
-    <div class="col-4 font-2em text-center incomeType haircut" @click="selectIncomeType('haircut')">
-        <i class="fa-solid fa-scissors"></i>
+  <div class="m-4 flex" v-for="item in incomeTypes" :key="item.id">
+    <div class="col-4 font-2em text-center incomeType" :class="item.title" @click="selectIncomeType(item)">
+        <i :class="item.icon"></i>
     </div>
   </div>
 </template>
 
 <script>
 import $ from 'jquery';
+import Api from '@/services/endpoint/tenant.service'
 
 export default {
   name: "IncomeType",
+  data() {
+    return {
+      incomeTypes: []
+    };
+  },
+  mounted(){
+    this.feedData()
+  },
   methods:{
-    selectIncomeType(incomeType){
-        this.$parent.incomeType = incomeType
+    selectIncomeType(incomeCate){
+        this.$parent.incomeCategoryId = incomeCate.id
         $('.incomeType').removeClass('active')
-        $(`.${incomeType}`).addClass("active");
-    }
+        $(`.${incomeCate.title}`).addClass("active");
+    },
+    async feedData(){
+      let res = await Api.IncomeCategories.getIncomeCategories();
+      if(res){
+        this.incomeTypes = res.data
+      }
+    },
+    
   }
 };
 </script>
