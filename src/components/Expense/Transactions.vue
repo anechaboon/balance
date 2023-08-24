@@ -13,56 +13,21 @@
                     width="40"
                 ></v-btn>
             </div>
-
         </div>
-        <div class="border-radius">
-            <div class="m-05em">
-                Today
-            </div>
-            <div class="transactions">
-                <div class="row pb-3">
-                    <div class="col-2">
-                        <img alt="Vue logo" src="@/assets/profile.png" width="40" />
-                    </div>
-                    <div class="col-7">
-                        <div>
-                            <b>Uber</b>
-                        </div>
-                        <div>
-                            06:56 PM
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <b>- ฿ 200</b>
-                    </div>
-                </div>
-                <div class="row pb-3">
-                    <div class="col-2">
-                        <img alt="Vue logo" src="@/assets/profile.png" width="40" />
-                    </div>
-                    <div class="col-7">
-                        <div>
-                            <b>Uber</b>
-                        </div>
-                        <div>
-                            06:56 PM
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <b>- ฿ 200</b>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <TransactionList></TransactionList>
     </div>
 
 </template>
   
 <script>
-    export default {
+import TransactionList from './TransactionList.vue';
+export default {
     name: 'DashboardPage',
+    components: {
+        TransactionList
+    },
 
-    }
+}
 </script>
 
 <style>

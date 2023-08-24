@@ -1,6 +1,6 @@
 <template>
-  <div class="m-4 flex" v-for="item in incomeTypes" :key="item.id">
-    <div class="col-4 font-2em text-center incomeType" :class="item.title" @click="selectIncomeType(item)">
+  <div class="m-4 flex">
+    <div class="col-4 font-2em text-center incomeType" v-for="item in incomeTypes" :key="item.id" :class="item.title" @click="selectIncomeType(item)">
         <i :class="item.icon"></i>
     </div>
   </div>

@@ -77,9 +77,6 @@ export default {
                 await Api.Income.add(param);
             }
             this.$refs.transactionList.fetchData()
-
-            
-
         }
     }
 

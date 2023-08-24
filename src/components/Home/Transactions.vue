@@ -15,12 +15,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="m-05em">
-                Today
-            </div>
-            <div class="transactions">
-                <TransactionList></TransactionList>
-            </div>
+            <TransactionList></TransactionList>
         </div>
     </div>
   </template>

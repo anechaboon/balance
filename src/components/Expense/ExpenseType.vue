@@ -1,38 +1,38 @@
 <template>
   <div class="m-4 flex">
-    
-    <div class="col-4 font-2em text-center expenseType pills" @click="selectExpenseType('pills')">
-        <i class="fa-solid fa-pills"></i>
-    </div>
-    <div class="col-4 font-2em text-center expenseType food" @click="selectExpenseType('food')">
-        <i class="fa-solid fa-utensils"></i> 
-    </div>
-    <div class="col-4 font-2em text-center expenseType shopping" @click="selectExpenseType('shopping')">
-        <i class="fa-solid fa-cart-shopping"></i>
-    </div>
-    <div class="col-4 font-2em text-center expenseType phone" @click="selectExpenseType('phone')">
-        <i class="fa-solid fa-phone"></i>
-    </div>
-    <div class="col-4 font-2em text-center expenseType pea" @click="selectExpenseType('pea')">
-        <i class="fa-solid fa-plug"></i>
-    </div>
-    <div class="col-4 font-2em text-center expenseType haircut" @click="selectExpenseType('haircut')">
-        <i class="fa-solid fa-scissors"></i>
+    <div class="col-4 font-2em text-center expenseType"  v-for="item in expenseTypes" :key="item.id" :class="item.title" @click="selectExpenseType(item)">
+        <i :class="item.icon"></i>
     </div>
   </div>
 </template>
 
 <script>
 import $ from 'jquery';
+import Api from '@/services/endpoint/tenant.service'
 
 export default {
   name: "ExpenseType",
+  data() {
+    return {
+      expenseTypes: []
+    };
+  },
+  mounted(){
+    this.feedData()
+  },
   methods:{
-    selectExpenseType(expenseType){
-        this.$parent.expenseType = expenseType
+    selectExpenseType(expenseCate){
+        this.$parent.expenseCategoryId = expenseCate.id
         $('.expenseType').removeClass('active')
-        $(`.${expenseType}`).addClass("active");
-    }
+        $(`.${expenseCate.title}`).addClass("active");
+    },
+    async feedData(){
+      let res = await Api.ExpenseCategories.getExpenseCategories();
+      if(res){
+        this.expenseTypes = res.data
+      }
+    },
+    
   }
 };
 </script>

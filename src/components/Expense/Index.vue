@@ -16,16 +16,26 @@
         </div>
         <ExpenseType></ExpenseType>
         <div class="p-2">
-            <input type="text" v-model="memo" class="form-control m-1" placeholder="Enter MEMO">
-            <input
-            type="number"
-            class="form-control m-1"
-            v-model="keyAmount"
-            id="txtBox"
-            placeholder="Press any button"
-            />
+            <div class="row">
+                <div class="col-6 pr-0">
+                    <input
+                        type="number"
+                        class="form-control m-1"
+                        v-model="keyAmount"
+                        id="txtBox"
+                        placeholder="Press any button"
+                    />
+                </div>
+                <div class="col-6">
+                    <input type="text" v-model="memo" class="form-control m-1" placeholder="Enter MEMO">
+                </div>
+            </div>
+
             <Keyboard class="m-1" @pressed="keyAmount = $event" :selfValue="keyAmount"></Keyboard>
-            <button class="btn btn-primary w-100" @click="save">SAVE</button>
+            <button class="btn btn-primary w-100" @click="saveExpense">SAVE</button>
+        </div>
+        <div class="row">
+            <TransactionList ref="transactionList"></TransactionList>
         </div>
         
     </div>
@@ -34,11 +44,15 @@
 <script>
 import Keyboard from './Keyboard.vue'
 import ExpenseType from './ExpenseType.vue'
+import TransactionList from './TransactionList.vue'
+import Api from '@/services/endpoint/tenant.service'
+import Cookies from 'js-cookie'
 export default {
     name: 'ExpensePage',
     components: {
         Keyboard,
-        ExpenseType
+        ExpenseType,
+        TransactionList
     },
     data() {
       return {
@@ -49,12 +63,21 @@ export default {
       }
     },
     methods:{
-        save(){
+        async saveExpense(){
             this.amount = this.keyAmount
-            console.log(`log:memo`,this.memo);
-            console.log(`log:expenseType`,this.expenseType);
-            console.log(`log:amount`,this.amount);
-            
+
+            if(this.expenseCategoryId == null || this.expenseCategoryId == ''){
+                alert('PLEASE SELECT INCOME TYPE')
+            }else{
+                let param = {
+                    memo : this.memo,
+                    expense_category_id : this.expenseCategoryId,
+                    amount : this.amount,
+                    user_id: parseInt(Cookies.get('balanceUserId'))
+                }
+                await Api.Expense.add(param);
+            }
+            this.$refs.transactionList.fetchData()
         }
     }
 

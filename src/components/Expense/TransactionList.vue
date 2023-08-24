@@ -4,7 +4,7 @@
             Today
         </div>
         <div class="transactions">
-            <div class="row pt-1 my-1" v-for="item in allTransactionList" :key="item.id" :class="[item.expense_category_id ? 'pink' : 'green']">
+            <div class="row pb-3" v-for="item in expenseList" :key="item.id">
                 <div class="col-2">
                     <img alt="Vue logo" src="@/assets/profile.png" width="40" />
                 </div>
@@ -17,8 +17,7 @@
                     </div>
                 </div>
                 <div class="col-3">
-                    <b v-if="item.expense_category_id">- ฿ {{ item.amount }}</b>
-                    <b v-else>+ ฿ {{ item.amount }}</b>
+                    <b>- ฿ {{ item.amount }}</b>
                 </div>
             </div>
         </div>
@@ -30,20 +29,20 @@ import Api from '@/services/endpoint/tenant.service'
 export default {
     name: 'DashboardPage',
     data() {
-        return {
-            allTransactionList: []
-        };
+      return {
+        expenseList: [],
+      };
     },
     mounted(){
-        this.allTransaction();
+        this.fetchData();
     },
     methods:{
-        async allTransaction(){
-            let res = await Api.Home.getIncomeAndExpense();
-            this.allTransactionList = res.data
+        async fetchData(){
+            let queryString = '?sort=desc';
+            let res = await Api.Expense.getExpense(queryString);
+            this.expenseList = res.data
         }
-    },
-    
+    }
     
 
 }
@@ -55,12 +54,6 @@ export default {
     }
     .border-radius{
         border-radius: 20px;
-    }
-    .pink{
-        background-color: #f0bdbd;
-    }
-    .green{
-        background-color: #bdf0da;
     }
 </style>
   

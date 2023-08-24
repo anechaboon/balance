@@ -5,20 +5,20 @@
       v-for="key in keys"
       :key="key"
       @click="press(key)"
-      class="btn btn-lg shadow-none"
+      class="btn btn-lg shadow-none btn-calculator"
       :class="keyTheme"
     >
       {{ key }}
     </button>
     <button
-      class="btn btn-lg shadow-none"
+      class="btn btn-lg shadow-none btn-calculator"
       :class="buttonTheme"
       @click="clear()"
     >
       &larr;
     </button>
     <button
-      class="btn btn-lg shadow-none"
+      class="btn btn-lg shadow-none btn-calculator"
       :class="buttonTheme"
       @click="clear('all')"
     >
@@ -74,6 +74,9 @@ export default {
 .btn-keyboard {
   background-color: #80b6ff;
   color: #ffffff;
+  height: 2em;
+}
+.btn-calculator {
   height: 2em;
 }
 </style>
