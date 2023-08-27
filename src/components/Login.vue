@@ -43,9 +43,12 @@ export default {
             let res = await Api.Authorization.login(credentials);
 
             if(res){
+                alert('login Success');
                 let userId = res.data.id
                 Cookies.set('balanceUserId',userId);
                 window.location.href = '/';
+            }else{
+                alert('login Failed');
             }
 
         }
