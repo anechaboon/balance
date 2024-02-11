@@ -120,7 +120,12 @@ export default {
             if(res.status == 200){
                 this.walletList = res.data
                 let walletListId = []
-                this.wallet = res.data.find(obj => obj.id == this.walletId)
+                if(!isNaN(this.walletId)){
+                    this.wallet = res.data.find(obj => obj.id == this.walletId)
+                }else{
+                    this.wallet = res.data[0]
+                    this.walletId = this.wallet.id
+                }
                 res.data.forEach(function(value) {
                     walletListId.push({
                         id: value.id,

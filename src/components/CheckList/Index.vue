@@ -303,7 +303,12 @@ export default {
                     id: 0,
                     title: 'All'
                 }]
-                this.wallet = res.data.find(obj => obj.id == this.walletId)
+                if(!isNaN(this.walletId)){
+                    this.wallet = res.data.find(obj => obj.id == this.walletId)
+                }else{
+                    this.wallet = res.data[0]
+                    this.walletId = this.wallet.id
+                }
                 res.data.forEach(function(value) {
                     walletListId.push({
                         id: value.id,
